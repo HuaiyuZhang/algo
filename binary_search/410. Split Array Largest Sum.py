@@ -21,3 +21,22 @@ class Solution:
             else:
                 l = mid + 1
         return ans
+
+class Solution:
+    def splitArray(self, nums: List[int], m: int) -> int:
+        l = max(nums)
+        r = sum(nums)
+        while l < r:
+            mid = l + (r - l)//2
+            cuts = 0
+            cum_sum = 0
+            for num in nums:
+                cum_sum += num
+                if cum_sum > mid:
+                    cum_sum = num
+                    cuts += 1  
+            if cuts + 1 <= m:
+                r = mid              
+            else:
+                l = mid + 1           
+        return l
